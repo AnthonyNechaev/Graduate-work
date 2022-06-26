@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Periodic table</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <section id="app">
+        <article id="groups">
+            <div v-for="group in groups"
+            class="group-title">
+                <p>A</p>
+                <p>{{group}}</p>
+                <p>B</p>
+            </div>
+        </article>
+        <article id="periods">
+            <div v-for="per in periods">
+                <p>{{per}}</p>
+            </div>
+        </article>
+        <article class="table" @click="clickElem">
+            <div v-for="elem in elements" :id="elem.number"
+                :class="elem.group" class="cell">
+                <p class="num">{{elem.number}}</p>
+                <p class="sym">{{elem.symbol}}</p>
+                <p class="name">{{elem.name}}</p>
+                <p class="mass">{{elem.mass}}</p>
+            </div>
+        </article>
+        <article class="f-elems" @click="clickElem">
+            <div v-for="elem in fElems" :id="elem.number"
+                :class="elem.group" class="cell">
+                <p class="num">{{elem.number}}</p>
+                <p class="sym">{{elem.symbol}}</p>
+                <p class="name">{{elem.name}}</p>
+                <p class="mass">{{elem.mass}}</p>
+            </div>
+        </article>   
+    </section>
+    <script src="./js/objects.js"></script>
+</body>
+</html>

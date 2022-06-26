@@ -1,0 +1,133 @@
+*{
+    box-sizing: border-box;
+    font-size: 12px;
+    margin: 0;
+    user-select: none;
+}
+#app{
+    display: grid;
+    grid-template: 
+    ". groups"
+    "periods table"
+    "f-elems f-elems";
+    grid-template-columns: 1fr 15fr;
+    gap: 5px;
+}
+.s{
+    background-color: plum;
+}
+.d{
+    background-color: cornflowerblue;
+}
+.p{
+    background-color: rgb(255, 255, 141);
+}
+.f{
+    background-color: rgb(73, 246, 134);
+}
+.cell{
+    display: grid;
+    grid-template: 
+    "num sym"
+    "mass name";
+    padding: 5px;
+}
+
+.name{
+    grid-area: name;
+    text-align: right;
+    padding-left: 10px;
+}
+
+.mass{
+    grid-area: mass;
+}
+
+.num{
+    grid-area: num;
+}
+
+.sym{
+    grid-area: sym;    
+    text-align: right;
+    font-weight: bold;
+    font-size: large;
+    padding-bottom: 5px;
+}
+
+.table{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    grid-area: table;
+}
+.f-elems{
+    grid-area: f-elems;
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    gap: 5px;
+}
+.f-elems .cell{
+    font-size: x-small;
+}
+div.s.cell:nth-child(2){
+    grid-column: 8/9;
+}
+div.s.cell:nth-child(3),
+div.s.cell:nth-child(11),
+div.s.cell:nth-child(19),
+div.s.cell:nth-child(37),
+div.s.cell:nth-child(55),
+div.s.cell:nth-child(73){
+    grid-column: 1/2;
+}
+/* почему-то не работает выбор по id */
+
+#groups{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-area: groups;
+}
+
+#groups :nth-child(8){
+    grid-column: 8/11;
+}
+
+.group-title{
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    border: 2px black solid;
+}
+
+#periods{
+    grid-area: periods;
+    display: grid;
+    grid-template-rows: repeat(11, 1fr);
+}
+
+#periods > div {
+    font-size: larger;
+    font-weight: bold;
+    border: 2px black solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#periods :nth-child(4){
+    grid-row: 4/6;
+}
+#periods :nth-child(5){
+    grid-row: 6/8;
+}
+#periods :nth-child(6){
+    grid-row: 8/10;
+}
+#periods :nth-child(7){
+    grid-row: 10/12;
+}
+
+.highlight {
+    background-color: greenyellow;
+}
