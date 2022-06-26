@@ -65,7 +65,7 @@ const app = Vue.createApp({
         clickElem(event){
             let elem = event.target.closest('div');
             if (!elem) return;
-            if(elem.id != (randomId+1)) return;
+            if(elem.id != (task.number)) return;
             highlight(elem);
             points++;
             console.log(points);
