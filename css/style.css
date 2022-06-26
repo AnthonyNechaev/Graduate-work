@@ -131,3 +131,19 @@ div.s.cell:nth-child(73){
 .highlight {
     background-color: greenyellow;
 }
+
+.task{
+    grid-column: 3/7;
+    grid-row: 1/2;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.task > strong {
+    font-size: xx-large;
+    text-transform: uppercase;
+}
+.task > span {
+    font-size: xx-large;
+}

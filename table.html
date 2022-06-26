@@ -29,6 +29,10 @@
                 <p class="name">{{elem.name}}</p>
                 <p class="mass">{{elem.mass}}</p>
             </div>
+            <div class="task">
+                <span>Найдите</span>
+                <strong>{{task.name}}</strong>
+            </div>
         </article>
         <article class="f-elems" @click="clickElem">
             <div v-for="elem in fElems" :id="elem.number"
