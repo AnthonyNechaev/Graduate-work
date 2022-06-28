@@ -38,16 +38,16 @@ for (let i = 1; i <= names.length; i++) {
 };
 
 let allElems = [...elements, ...fElems];
-let randomId =Math.floor((Math.random() * 118));
+let randomId = Math.floor((Math.random() * 118));
 let task = allElems[randomId];
 
 let selectedDiv;
 function highlight(elem) {
-    if (selectedDiv) { // убрать существующую подсветку, если есть
+    if (selectedDiv) { 
       selectedDiv.classList.remove('highlight');
     }
     selectedDiv = elem;
-    selectedDiv.classList.add('highlight'); // подсветить новый td
+    selectedDiv.classList.add('highlight');
   };
   let points = 0;
 const app = Vue.createApp({
@@ -65,10 +65,15 @@ const app = Vue.createApp({
         clickElem(event){
             let elem = event.target.closest('div');
             if (!elem) return;
-            if(elem.id != (task.number)) return;
+            if(elem.id != (this.task.number)) return;
             highlight(elem);
-            points++;
-            console.log(points);
+            this.points++;
+
+            console.log(this.points);
+            console.log(this.task);
+            this.randomId = Math.floor((Math.random() * 118));
+            this.task = allElems[this.randomId];
+            console.log(this.task);
         },
         
     }
