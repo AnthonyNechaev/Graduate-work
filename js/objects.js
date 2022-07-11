@@ -49,7 +49,9 @@ function highlight(elem) {
     selectedDiv = elem;
     selectedDiv.classList.add('highlight');
   };
-  let points = 0;
+
+let points = 0;
+
 const app = Vue.createApp({
     data(){
         return {
@@ -58,23 +60,46 @@ const app = Vue.createApp({
             groups,
             periods,
             task,
-            points
+            points,
+            isWorking: false,
         }
     },
     methods: {
         clickElem(event){
+            if(this.isWorking){
             let elem = event.target.closest('div');
             if (!elem) return;
             if(elem.id != (this.task.number)) return;
             highlight(elem);
             this.points++;
-
-            console.log(this.points);
-            console.log(this.task);
             this.randomId = Math.floor((Math.random() * 118));
             this.task = allElems[this.randomId];
-            console.log(this.task);
+            } else return;
         },
-        
+        startGame(){
+            let game_timer = document.querySelector(".game_timer");
+            if(game_timer.innerHTML){
+                game_timer.innerHTML = ``;
+            }
+            let wrapper = document.createElement("div");
+            wrapper.classList.add("wrapper");
+            wrapper.innerHTML = `
+                <div class="timer">
+                    <div class="line"></div>
+                    <div class="timer_body">
+                        <div class="counter">
+                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span><span>41</span><span>42</span><span>43</span><span>44</span><span>45</span><span>46</span><span>47</span><span>48</span><span>49</span><span>50</span><span>51</span><span>52</span><span>53</span><span>54</span><span>55</span><span>56</span><span>57</span><span>58</span><span>59</span><span>60</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            game_timer.append(wrapper);
+            this.points = 0;
+            this.isWorking = true;
+            setTimeout(this.endGame, 60 * 1000);
+        },
+        endGame(){
+            this.isWorking = false;
+        }
     }
 }).mount("#app");

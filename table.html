@@ -30,8 +30,16 @@
                 <p class="mass">{{elem.mass}}</p>
             </div>
             <div class="task">
-                <span>Найдите</span>
-                <strong>{{task.name}}</strong>
+                <span class="large">Найдите элемент</span>
+                <strong class="large">{{task.name}}</strong>
+            </div>
+            <div class="points">
+                <span class="large">Счёт:</span>
+                <strong class="large">{{points}}</strong>
+            </div>
+            <button id="start" @click="startGame">Старт</button>
+            <div class="game_timer">
+                
             </div>
         </article>
         <article class="f-elems" @click="clickElem">
