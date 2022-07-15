@@ -41,13 +41,25 @@ let allElems = [...elements, ...fElems];
 let randomId = Math.floor((Math.random() * 118));
 let task = allElems[randomId];
 
-let selectedDiv;
+  function removeRight(elem){
+    if (elem) { 
+        elem.classList.remove('highlight');
+      }
+    elem.classList.remove('highlight');
+}
 function highlight(elem) {
-    if (selectedDiv) { 
-      selectedDiv.classList.remove('highlight');
-    }
-    selectedDiv = elem;
-    selectedDiv.classList.add('highlight');
+    elem.classList.add('highlight');
+    setTimeout(removeRight, 500, elem);
+  };
+function removeWrong(elem){
+    if (elem) { 
+        elem.classList.remove('wrong');
+      }
+    elem.classList.remove('wrong');
+}
+function wrong(elem) {
+    elem.classList.add('wrong');
+    setTimeout(removeWrong, 500, elem);
   };
 
 let points = 0;
@@ -69,7 +81,10 @@ const app = Vue.createApp({
             if(this.isWorking){
             let elem = event.target.closest('div');
             if (!elem) return;
-            if(elem.id != (this.task.number)) return;
+            if(elem.id != (this.task.number)) {
+                wrong(elem);
+                return;
+            };
             highlight(elem);
             this.points++;
             this.randomId = Math.floor((Math.random() * 118));
@@ -100,6 +115,7 @@ const app = Vue.createApp({
         },
         endGame(){
             this.isWorking = false;
+            alert(`Время вышло. Ваш счёт: ${this.points}`);
         }
     }
 }).mount("#app");
